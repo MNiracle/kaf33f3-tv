@@ -1,106 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaf33f3 TV – Watch Movies & Series Online</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kaf33f3 TV</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <!-- TOP NAV -->
-    <header class="navbar">
-        <div class="brand">
-            <span class="logo">📺</span>
-            <h1>Kaf33f3 TV</h1>
-        </div>
-
-        <nav class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Series</a>
-            <a href="#">Anime</a>
-            <a href="#">K-Drama</a>
-            <a href="#">Nollywood</a>
-            <a href="#">Bollywood</a>
-        </nav>
-
-        <div class="search-bar">
-            <input type="search" id="searchInput" placeholder="Search for movies, shows...">
-        </div>
-    </header>
-
-    <!-- HERO BANNER -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to Kaf33f3 TV</h2>
-            <p>Stream unlimited Movies, Series, Anime, K-Drama, and more.</p>
-            <button class="hero-btn">Start Watching</button>
-        </div>
-    </section>
-
-    <!-- CATEGORIES -->
-    <section class="categories">
-        <h2 class="section-title">Categories</h2>
-        <div class="category-list">
-            <button class="cat">Action</button>
-            <button class="cat">Thriller</button>
-            <button class="cat">Romance</button>
-            <button class="cat">Sci-Fi</button>
-            <button class="cat">Comedy</button>
-            <button class="cat">Horror</button>
-            <button class="cat">Adventure</button>
-            <button class="cat">Drama</button>
-        </div>
-    </section>
-
-    <!-- TRENDING -->
-    <section class="trending">
-        <h2 class="section-title">🔥 Trending Now</h2>
-        <div class="trending-slider" id="trendingSlider">
-            <!-- JS will insert trending movie cards here -->
-        </div>
-    </section>
-
-    <!-- MOVIE GRID -->
-    <section class="movie-section">
-        <h2 class="section-title">All Movies</h2>
-        <div id="movieGrid" class="movie-grid">
-            <!-- JS will load movies here -->
-        </div>
-
-        <div class="load-more">
-            <button id="loadMoreBtn">Load More</button>
-        </div>
-    </section>
-
-    <!-- MOVIE MODAL -->
-    <div id="movieModal" class="modal" aria-hidden="true">
-        <div class="modal-overlay" id="closeModal"></div>
-
-        <div class="modal-box">
-            <button class="modal-close" id="modalCloseBtn">✕</button>
-
-            <div class="modal-content">
-                <div class="modal-poster" id="modalPoster"></div>
-
-                <div class="modal-info">
-                    <h2 id="modalTitle"></h2>
-                    <p class="tagline" id="modalTagline"></p>
-                    <p><strong>Year:</strong> <span id="modalYear"></span></p>
-                    <p><strong>Genres:</strong> <span id="modalGenres"></span></p>
-                    <p><strong>Rating:</strong> ⭐ <span id="modalRating"></span></p>
-                    <p class="overview" id="modalOverview"></p>
-                </div>
-            </div>
-        </div>
+  <header class="navbar">
+    <div class="brand">
+      <span class="logo">📺</span>
+      <h1>Kaf33f3 TV</h1>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>© 2025 Kaf33f3 TV — All rights reserved.</p>
-    </footer>
+    <nav class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">Series</a>
+      <a href="#">Anime</a>
+      <a href="#">K-Drama</a>
+      <a href="#">Nollywood</a>
+    </nav>
 
-    <script src="app.js"></script>
+    <div id="authArea" style="display:flex;align-items:center;gap:8px"></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Welcome to Kaf33f3 TV</h2>
+      <p>Stream Movies, Series, Anime and more.</p>
+      <button class="hero-btn" id="startBtn">Start Watching</button>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2 class="section-title">Categories</h2>
+    <div class="category-list">
+      <button class="cat">Action</button>
+      <button class="cat">Thriller</button>
+      <button class="cat">Romance</button>
+      <button class="cat">Sci-Fi</button>
+      <button class="cat">Comedy</button>
+      <button class="cat">Horror</button>
+      <button class="cat">Adventure</button>
+      <button class="cat">Drama</button>
+    </div>
+  </section>
+
+  <section class="trending">
+    <h2 class="section-title">🔥 Trending Now</h2>
+    <div class="trending-slider" id="trendingSlider"></div>
+  </section>
+
+  <section class="movie-section">
+    <h2 class="section-title">All Movies</h2>
+    <input id="searchInput" type="search" placeholder="Search titles..." />
+    <div id="movieGrid" class="movie-grid"></div>
+    <div class="load-more"><button id="loadMoreBtn">Load More</button></div>
+  </section>
+
+  <!-- Movie Modal -->
+  <div id="movieModal" class="modal" aria-hidden="true">
+    <div class="modal-overlay" id="modalClose"></div>
+    <div class="modal-box" id="modalContent">
+      <button id="modalCloseBtn" class="modal-close">✕</button>
+      <div id="modalPoster" style="background:#222;height:320px;background-size:cover;background-position:center"></div>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <p id="modalOverview"></p>
+        <p><strong>Rating:</strong> <span id="modalRating"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <button id="adminBtn" style="display:none">Admin</button>
+
+  <footer class="footer">
+    <p>© 2025 Kaf33f3 TV — Demo</p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
